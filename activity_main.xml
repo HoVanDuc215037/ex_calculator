@@ -68,7 +68,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#FFFFFF"
+            android:backgroundTint="#F0ECEC"
+            android:text="%"
+            android:textSize="40dp"
+            android:id="@+id/btn_mod"
+            android:textColor="#000000"
             />
 
         <Button
@@ -207,12 +211,12 @@
         android:layout_height="0dp"
         android:layout_weight="1">
         <Button
-            android:id="@+id/btn_dot"
+            android:id="@+id/btn_negative"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="40dp"
-            android:backgroundTint="#FFFFFF"
+            android:text="+/-"
+            android:textSize="40sp"
             />
         <Button
             android:id="@+id/btn0"

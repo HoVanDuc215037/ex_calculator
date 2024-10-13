@@ -40,6 +40,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         findViewById<Button>(R.id.btn_sub).setOnClickListener(this)
         findViewById<Button>(R.id.btn_mul).setOnClickListener(this)
         findViewById<Button>(R.id.btn_div).setOnClickListener(this)
+        findViewById<Button>(R.id.btn_mod).setOnClickListener(this)
+        findViewById<Button>(R.id.btn_negative).setOnClickListener(this)
 
         findViewById<Button>(R.id.btn_clear).setOnClickListener(this)
         findViewById<Button>(R.id.btn_del).setOnClickListener(this)
@@ -86,6 +88,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             switch(3)
         } else if (id == R.id.btn_div) {
             switch(4)
+        } else if (id == R.id.btn_mod) {
+            switch(5)
         } else if (id == R.id.btn_calc) {
             if((get_num2==1)&&(op!=0)) {
                 calc(num1, num2, op)
@@ -95,19 +99,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 op=0
             }
         }
+
         if(id == R.id.btn_clear){
             clear()
         }
         if(id == R.id.btn_del){
             del()
         }
+        if(id == R.id.btn_negative){
+            changeSign(count_num)
+        }
     }
-
     fun calc(num_1: Int, num_2: Int, o_p: Int ){
         if(o_p==1) operator.text= "+"
         else if (o_p==2) operator.text= "-"
         else if(o_p==3) operator.text= "*"
         else if(o_p==4) operator.text= "/"
+        else if(o_p==5) operator.text= "%"
         next_num.text=num_2.toString()
         if(o_p==1) {
             if(get_num2!=0) num1= num_1+num_2
@@ -121,9 +129,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if(o_p==4){
             if((num_2!=0)&&(get_num2!=0)) num1= num_1/num_2
         }
-
+        if(o_p==5){
+            if((num_2!=0)&&(get_num2!=0)) num1= num_1%num_2
+        }
     }
-
     fun switch(ope: Int){
         count_num=2
         prev_num.text= num1.toString()
@@ -157,6 +166,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             printOutput(num2.toString())
         }
     }
+    fun changeSign(get_num: Int) {
+        if (get_num == 1) {
+            num1 = 0 - num1
+            get_num1=1
+            printOutput(num1.toString())
+        } else if (get_num==2) {
+            num2 = 0 - num2
+            get_num2=1
+            printOutput(num2.toString())
+        }
+    }
     fun printOutput(num: String){
         textoutput.text = num
     }
@@ -165,6 +185,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         else if (op==2) operator.text= "-"
         else if(op==3) operator.text= "*"
         else if(op==4) operator.text= "/"
+        else if(op==5) operator.text= "%"
     }
     fun clear(){
         num1=0
